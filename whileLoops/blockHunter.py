@@ -6,7 +6,7 @@ mc = Minecraft.create()
 
 destX = random.randint(-127, 127)
 destZ = random.randint(-127, 127)
-destY = random.randint(destX, destZ)
+destY = mc.getHeight(destX, destZ)
 
 block = 57
 mc.setBlock(destX, destY, destZ, block)
