@@ -1,7 +1,7 @@
 from mcpi.minecraft import Minecraft
 mc = Minecraft.create()
 
-from pickle import *
+import pickle
 
 def sortPair(val1, val2):
     if val1 > val2:
@@ -19,38 +19,18 @@ def copyStructure(x1, y1, z1, x2, y2, z2):
     length = z2 - z1
     
     structure = []
-    stack = []
-    wall = []
     
     print("Please wait...")
-    for z in range(z1,z2 +1):
-        for x in range(x1,x2 +1):
-            for y in range(y1,y2+1):
-                block = mc.getBlock(x,y,z)
-                stack.append(block)
-            wall.append(stack)
-            stack = []
-        structure.append(wall)
-        wall = []
-        
-    print(structure)
+    for row in range(0, length):
+        structure.append([])
+        for column in range(0, width):
+            structure[row].append([])
+            for depth in range(0, height):
+                block = mc.getBlock(x1 + column,y1 + row,z1 + depth)
+                structure[row][column].append(block)
     
     return structure
 
-def buildStructure(x, y, z, structure):
-    xStart = x
-    yStart = y
-    
-    for wall in structure:
-        for stack in wall:
-            for block in stack:
-                mc.setBlock(x,y,z,block)
-                y+=1
-            x+=1
-            y=yStart
-        z+=1
-        x=xStart
-    
 #get position of first corner
 input("Move to the first corner and press enter in this window")
 pos = mc.player.getTilePos()
@@ -64,6 +44,6 @@ x2, y2, z2 = pos.x, pos.y, pos.z
 #copy building
 structure = copyStructure(x1, y1, z1, x2, y2, z2)
 
-saveFile = open("saveStructure.txt", "a")
-saveFile.write(str(structure))
+saveFile = open("saveStructure.txt", "wb")
+pickle.dump(structure, saveFile)
 saveFile.close()
