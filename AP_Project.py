@@ -5,34 +5,34 @@ import time
 items = []
 
 def getBlocks(x,y,z):
-    x2 = x
-    y2 = y
-    z2 = z
-    block2 = mc.getBlock(x2,y2,z2)       
+    block2 = mc.getBlock(x,y,z)       
     if block2 == 3:
         items.append(57)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
     elif block2 == 103:
         items.append(42)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
     elif block2 == 46:
         items.append(41)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
     elif block2 == 35:
         items.append(56)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
     elif block2 == 5:
         items.append(15)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
     elif block2 == 22:
         items.append(14)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
     elif block2 == 87:
         items.append(58)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
     elif block2 == 12:
         items.append(61)
-        mc.setBlock(x2,y2,z2, 0)
+        mc.setBlock(x,y,z, 0)
+    elif block2 == 1:
+        items.append(47)
+        mc.setBlock(x,y,z, 0)
 
 x = 45
 y = 17
